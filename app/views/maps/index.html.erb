@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><title>JavaScript勉強会</title><style type="text/css">
+/**/
+body { margin-left:0px; margin-right:0px; margin-top:0px; margin-bottom:0px; height:100% }
+html { height:100% }
+/**/ 
+</style></head>
+<body>
+<div id="menu">
+  <%= form_tag( url_for(:action => 'change') ) do %>
+    <%= select_tag('mm_file', options_for_select(@mm_files,  @current_mm_file) , :onchange => "$('#change').click();") %>
+    <%= submit_tag('Change', :id => "change", :style => "display: none") %>
+  <% end %>
+</div>
+<div id="map">
+  <applet code="freemind.main.FreeMindApplet.class" archive="/freemindbrowser.jar" width="100%" height="100%">
+  <param name="type" value="application/x-java-applet;version=1.4"/>
+  <param name="scriptable" value="false"/>
+  <param name="modes" value="freemind.modes.browsemode.BrowseMode"/>
+  <param name="browsemode_initial_map" value="./<%=  URI.encode @current_mm_file %>" />
+  <param name="initial_mode" value="Browse"/>
+  <param name="selection_method" value="selection_method_direct"/></applet>
+</div>
+
+</body></html>
+
+
