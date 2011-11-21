@@ -16,7 +16,7 @@ class MapsController < ApplicationController
   def get_mm_files
     mm_path = Rails.root + "public/maps/"
     mm_files = []
-    Dir::glob(Rails.root + "public/maps/**/*.mm").each {|f|
+    Dir::glob(Rails.root + mm_path + "**/*.mm").each {|f|
       mm_files << f.gsub(/#{mm_path}/,"")
     }
 
